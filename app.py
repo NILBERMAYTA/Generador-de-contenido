@@ -125,16 +125,13 @@ def render_results() -> None:
             with st.expander("Prompt visual usado"):
                 st.write(st.session_state["visual_prompt"])
         else:
-            st.info("Aquí se mostrará la imagen generada por Stability AI.")
+            st.info("Aquí se mostrará la imagen.")
 
 
 def main() -> None:
     init_session_state()
 
-    st.title("Estudio Creativo Gemini")
-    st.caption(
-        "Genera historias, poemas o descripciones de producto en español con Gemini y crea una imagen relacionada con Stability AI."
-    )
+    st.title("Generación de Contenido Creativo Asistida por IA")
 
     content_type, style, length, aspect_ratio = render_sidebar()
 
@@ -148,12 +145,6 @@ def main() -> None:
             "No se encontró `STABILITY_API_KEY`. Agrega tu clave de Stability AI en `.env` para generar imágenes."
         )
 
-    st.info(
-        "El texto se genera con Gemini y la imagen con Stable Image Ultra de Stability AI."
-    )
-    st.caption(
-        f"Modelo de texto: `{get_text_model()}` | Imagen: `Stable Image Ultra`"
-    )
 
     user_prompt = st.text_area(
         "Escribe tu idea o prompt base",
