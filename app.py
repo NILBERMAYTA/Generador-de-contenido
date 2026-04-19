@@ -19,7 +19,7 @@ from src.utils import make_download_name
 
 st.set_page_config(
     page_title="Estudio Creativo Gemini",
-    page_icon="🎨",
+    page_icon="🤫",
     layout="wide",
 )
 
@@ -122,8 +122,6 @@ def render_results() -> None:
                 mime=st.session_state["image_mime_type"],
                 use_container_width=True,
             )
-            with st.expander("Prompt visual usado"):
-                st.write(st.session_state["visual_prompt"])
         else:
             st.info("Aquí se mostrará la imagen.")
 

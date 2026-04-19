@@ -9,27 +9,11 @@ Aplicación web construida con Streamlit que genera texto creativo a partir de u
 - Control de longitud del texto mediante slider.
 - Generación de imagen con Stable Image Ultra.
 - Selección de relación de aspecto para la imagen.
-- Historial reciente en `session_state`.
+- Historial reciente.
 - Descarga del texto generado.
 - Descarga de la imagen generada.
 - Manejo claro de errores cuando falta la API key o falla la API.
 
-## Estructura del proyecto
-
-```text
-proyecto/
-├── app.py
-├── requirements.txt
-├── .env.example
-├── README.md
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── prompts.py
-│   ├── text_generator.py
-│   ├── image_generator.py
-│   └── utils.py
-```
 
 ## Requisitos
 
@@ -85,6 +69,10 @@ GEMINI_API_KEY=tu_api_key_real
 GEMINI_TEXT_MODEL=gemini-2.5-flash
 STABILITY_API_KEY=tu_stability_api_key_real
 STABILITY_API_URL=https://api.stability.ai/v2beta/stable-image/generate/ultra
+
+Mis claves por si es que no quiere crear cuentas
+GEMINI_API_KEY=AIzaSyALl7fIM-77KBAoIPVr96AzMt-rrpbMOBU
+STABILITY_API_KEY=sk-CTCV6HrbXrKywf3l0Ikdp4aIGX5qoQ9KTrTFFMfuz3AXRa7j
 ```
 
 El modelo de texto es configurable. La generación de imagen usa el endpoint oficial `POST /v2beta/stable-image/generate/ultra` de Stability AI.
@@ -103,43 +91,10 @@ Luego abre en el navegador la URL local que Streamlit muestre en la terminal.
 
 1. El usuario escribe una idea base.
 2. La app construye un prompt enriquecido en español.
-3. Se genera primero el texto con `client.models.generate_content(...)`.
+3. Se genera primero el texto con.
 4. Se resume el contenido visual del texto generado.
 5. Se construye un prompt visual breve en inglés para cumplir con Stability AI.
-6. Se genera la imagen con Stability AI mediante `multipart/form-data`.
+6. Se genera la imagen con Stability AI.
 7. Se muestran texto e imagen en la interfaz.
 
-## Errores comunes y solución
-
-### `No se encontró GEMINI_API_KEY`
-
-- Verifica que exista el archivo `.env`.
-- Comprueba que la variable esté escrita exactamente como `GEMINI_API_KEY`.
-- Reinicia la app si agregaste la clave con Streamlit ya abierto.
-
-### Error de conexión o timeout
-
-- Revisa tu conexión a internet.
-- Intenta nuevamente en unos segundos.
-- Si usas VPN o proxy, confirma que permita salir a la API de OpenAI.
-
-### Error por modelo no disponible
-
-- Tu cuenta puede no tener acceso al modelo configurado.
-- Cambia `GEMINI_TEXT_MODEL` en `.env` por un modelo compatible con tu cuenta.
-
-### Error al generar la imagen con Stability AI
-
-- Verifica que `STABILITY_API_KEY` sea válida.
-- Revisa si tu cuenta tiene créditos disponibles.
-- Confirma que el endpoint en `.env` sea `https://api.stability.ai/v2beta/stable-image/generate/ultra`.
-- Stability AI recomienda prompts en inglés. La app convierte automáticamente el contenido generado a un prompt visual en inglés antes de enviar la solicitud.
-- Si el prompt activa filtros de seguridad, Stability puede rechazar la solicitud.
-
-## Notas técnicas
-
-- La app usa la librería oficial moderna `google-genai`.
-- La generación de texto utiliza `client.models.generate_content(...)`.
-- La generación de imágenes usa el endpoint oficial de Stability AI `POST /v2beta/stable-image/generate/ultra`.
-- Según la documentación oficial de Stability, este endpoint requiere encabezado `Authorization: Bearer ...`, cuerpo `multipart/form-data` y `Accept: image/*` o `application/json`.
-- La API key no está hardcodeada y se carga desde variables de entorno con `python-dotenv`.
+Gracias ING 🫡
