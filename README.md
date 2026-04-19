@@ -70,9 +70,6 @@ GEMINI_TEXT_MODEL=gemini-2.5-flash
 STABILITY_API_KEY=tu_stability_api_key_real
 STABILITY_API_URL=https://api.stability.ai/v2beta/stable-image/generate/ultra
 
-Mis claves por si es que no quiere crear cuentas
-GEMINI_API_KEY=AIzaSyALl7fIM-77KBAoIPVr96AzMt-rrpbMOBU
-STABILITY_API_KEY=sk-CTCV6HrbXrKywf3l0Ikdp4aIGX5qoQ9KTrTFFMfuz3AXRa7j
 ```
 
 El modelo de texto es configurable. La generación de imagen usa el endpoint oficial `POST /v2beta/stable-image/generate/ultra` de Stability AI.
