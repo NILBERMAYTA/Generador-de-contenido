@@ -97,7 +97,6 @@ def render_results() -> None:
                 "Resultado",
                 value=st.session_state["generated_text"],
                 height=420,
-                key="generated_text_area",
                 disabled=True,
                 label_visibility="collapsed",
             )
